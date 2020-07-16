@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 
@@ -11,7 +12,9 @@ public class Main {
                         return Files.isRegularFile(path);
                     }
                 };
-        Path directory = FileSystems.getDefault().getPath("FileTree/Dir2/Dir3");
+//        Path directory = FileSystems.getDefault().getPath("FileTree/Dir2/Dir3");
+        Path directory = FileSystems.getDefault().getPath("FileTree" + File.separator + "Dir2" + File.separator + "Dir3");
+
         try (DirectoryStream<Path> contents = Files.newDirectoryStream(directory, filter)) {
             for (Path file : contents) {
                 System.out.println(file.getFileName());
@@ -20,5 +23,9 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
+        String separator = File.separator;
+        System.out.println(separator);
+        separator = FileSystems.getDefault().getSeparator();
+        System.out.println(separator);
     }
 }
