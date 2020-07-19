@@ -16,4 +16,10 @@ public class PrintNames extends SimpleFileVisitor<Path> {
         System.out.println(dir.toAbsolutePath());
         return FileVisitResult.CONTINUE;
     }
+
+    @Override
+    public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
+        System.out.println("Error accessing file " + file.toAbsolutePath() + " " + exc.getMessage());
+        return FileVisitResult.CONTINUE;
+    }
 }
