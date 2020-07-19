@@ -48,5 +48,7 @@ public class Main {
         for(Path path: rootPaths){
             System.out.println(path);
         }
+
+        //This is how we do it 
     }
 }
